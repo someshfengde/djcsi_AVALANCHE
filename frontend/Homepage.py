@@ -8,21 +8,17 @@ import io
 import requests
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.switch_page_button import switch_page
- 
-
 
 
 # Set page configuration
-st.set_page_config(
-    page_title="Avalanche",
-    page_icon="🔮")
-
+st.set_page_config(page_title="Avalanche", page_icon="🔮")
 
 
 # Utility functions
 def hash_password(password):
     # Hash a password string using SHA256
     return sha256(password.encode("utf-8")).hexdigest()
+
 
 def get_session_state():
     # Get the session state for the current session ID
@@ -31,6 +27,7 @@ def get_session_state():
     if st.session_state.session_id not in st.session_state:
         st.session_state[st.session_state.session_id] = {}
     return st.session_state[st.session_state.session_id]
+
 
 def set_session_state(state):
     # Set the session state for the current session ID
@@ -46,39 +43,43 @@ def register():
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     confirm_password = st.text_input("Confirm Password", type="password")
-    
+
     if st.button("Register"):
         if password == confirm_password:
             st.success("You have successfully registered.")
         else:
             st.error("Passwords do not match.")
-            
+
+
 def login():
     st.header("Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
-    
+
     if st.button("Login"):
         if username == "test" and password == "123456":
             set_session_state({"is_logged_in": True, "username": username})
             st.success("Logged in as {}".format(username))
-            #switch to color_chooser page
+            # switch to color_chooser page
             switch_page("color_chooser")
         else:
             st.error("Incorrect username or password.")
 
+
 def home():
     st.title("Avalanche")
+
 
 def logout():
     set_session_state({"is_logged_in": False, "username": None})
     st._rerun()
 
+
 # Main App
-def main():    
+def main():
     menu = ["Home", "Login", "Register"]
     choice = st.sidebar.selectbox("Select an option", menu)
-    
+
     # Check if the user is logged in
     session_state = get_session_state()
     is_logged_in = session_state.get("is_logged_in", False)
@@ -89,7 +90,7 @@ def main():
         logout_container = st.sidebar.container()
         with logout_container:
             st.button("Logout", on_click=logout)
-    
+
     # Show the appropriate page based on user selection
     if choice == "Home":
         home()
@@ -99,6 +100,7 @@ def main():
         register()
     elif is_logged_in:
         st.success(f"Logged in as {username}")
+
 
 if __name__ == "__main__":
     main()
