@@ -39,7 +39,9 @@ uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 if uploaded_file is not None:
     image = np.array(bytearray(uploaded_file.read()), dtype=np.uint8)
     image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    dis_im = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB
+    st.image(dis_im, caption='Uploaded Image.', use_column_width=True)
+
 
     st.write("Applying Segmentation for Walls & ceilings...")
     cfg = get_cfg()
