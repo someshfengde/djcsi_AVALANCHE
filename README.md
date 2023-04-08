@@ -1,2 +1,2 @@
 # djcsi_AVALANCHE
-hackathon project on AI/ML domain ( wall paintings) 
+hackathon project on AI/ML domain (Home Decor) 
