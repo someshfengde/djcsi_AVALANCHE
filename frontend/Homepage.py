@@ -50,6 +50,7 @@ def register():
     if st.button("Register"):
         if password == confirm_password:
             st.success("You have successfully registered.")
+            st.balloons()
         else:
             st.error("Passwords do not match.")
             
