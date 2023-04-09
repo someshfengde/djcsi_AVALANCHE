@@ -69,18 +69,23 @@ def login():
             st.error("Incorrect username or password.")
 
 def home():
-    st.title("Auto AI House Decor System")
-    st.write("Welcome to the Auto AI House Decor System, a revolutionary new way to decorate your home! Our system uses advanced artificial intelligence algorithms to suggest decor ideas that suit your taste and style. With just a few clicks, you can transform your home into a stylish and comfortable space that reflects your personality.")
+    st.markdown("""
+    # 🏠 AI House Decor System
 
-    st.write("Here are some of the key features of our system:")
-    st.write("- Personalized recommendations based on your preferences")
-    st.write("- Easy-to-use interface for quick and hassle-free decorating")
-    # st.write("- Integration with popular furniture and decor retailers for easy shopping")
-    st.write("- Real-time visualization of decor options in your home")
+    Welcome to the **AI House Decor System**, a revolutionary new way to decorate your home! Our system uses advanced artificial intelligence algorithms to suggest decor ideas that suit your taste and style. With just a few clicks, you can transform your home into a stylish and comfortable space that reflects your personality.
 
-    st.write("We believe that everyone deserves a beautiful and comfortable home, and our system makes it easier than ever to achieve that. Try it out today and see the difference for yourself!")
+    ## ✨ Key Features
 
-    st.write("Here's an example of the difference our system aims to make:")
+    1. **Personalized recommendations** based on your preferences
+    2. **Easy-to-use interface** for quick and hassle-free decorating
+    3. **Option to save** your favorite decor idea for later
+    4. **Real-time visualization** of decor options in your home
+
+    We believe that everyone deserves a beautiful and comfortable home, and our system makes it easier than ever to achieve that. *Try it out today and see the difference for yourself!*
+
+    ### 🌟 Here's an example of the difference our system **aims** to make:
+    """)
+
     col1, col2 = st.columns(2)
     with col1:
         st.image("1.jpg", caption="Before", use_column_width=True)
